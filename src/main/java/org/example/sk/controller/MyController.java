@@ -27,6 +27,10 @@ public class MyController {
         }
     }
 
+    public ArrayList<MyUser> getAll(){
+        return service.getAll();
+    }
+
     public void deleteAll(){
         service.deleteAll();
     }

@@ -28,6 +28,7 @@ public class MyDatabase {
 
     public void closeConnection() throws SQLException {
         this.connection.close();
+        System.out.println("Disconnected from H2 in-memory database.");
     }
 
     public Connection getConnection() {
