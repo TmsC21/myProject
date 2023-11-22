@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class MyDatabase {
 
-    public Connection connection;
+    private final Connection connection;
 
     public MyDatabase() throws SQLException {
         String jdbcURL = "jdbc:h2:mem:test";
@@ -16,7 +16,6 @@ public class MyDatabase {
     public void createConntection() throws SQLException{
 
         System.out.println("Connected to H2 in-memory database.");
-
         String sql = "CREATE TABLE SUSERS (\n" +
                 "    USER_ID INT PRIMARY KEY,\n" +
                 "    USER_GUID VARCHAR(50) NOT NULL,\n" +
@@ -24,11 +23,14 @@ public class MyDatabase {
                 ");";
 
         connection.createStatement().execute(sql);
-
         System.out.println("The users table was created");
     }
 
     public void closeConnection() throws SQLException {
         this.connection.close();
+    }
+
+    public Connection getConnection() {
+        return this.connection;
     }
 }
